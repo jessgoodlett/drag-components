@@ -1,5 +1,5 @@
 <template>
-  <div :class="['draggable-container', {'center': initialState}]" ref="draggable" @pointerdown="startDrag" @pointerup="stopDrag">
+  <div :class="['draggable-container', {'center': initialState, 'dragging': dragging}]" ref="draggable" @pointerdown="startDrag" @pointerup="stopDrag">
     <h1>DRAG AROUND</h1>
   </div>
 </template>
@@ -8,8 +8,9 @@
 import { ref } from 'vue';
 
 let clientX, clientY, movementX, movementY = 0;
-const initialState = ref(true)
 
+const initialState = ref(true)
+const dragging = ref();
 const draggable = ref();
 
 const startDrag = (event) => {
@@ -17,9 +18,13 @@ const startDrag = (event) => {
   clientX = event.clientX;
   clientY = event.clientY;
   window.addEventListener('pointermove', dragEvent);
+  dragging.value = true;
 }
 
-const stopDrag = () => window.removeEventListener('pointermove', dragEvent);
+const stopDrag = () => {
+  window.removeEventListener('pointermove', dragEvent);
+  dragging.value = false;
+};
 
 const dragEvent = (e) => updateDrag(e);
 
@@ -66,7 +71,7 @@ const generatePosition = () => {
   border: #fff 1px solid;
   position: absolute;
   padding: 50px;
-  cursor: pointer;
+  cursor: grab;
   transition: border .25s ease-in-out;
 }
 .draggable-container:hover {
@@ -75,5 +80,9 @@ const generatePosition = () => {
 
 .center {
   position: relative;
+}
+
+.dragging {
+  cursor: grabbing;
 }
 </style>
