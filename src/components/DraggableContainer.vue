@@ -1,5 +1,5 @@
 <template>
-  <div class="draggable-container" ref="draggable" @pointerdown="startDrag" @pointerup="stopDrag">
+  <div :class="['draggable-container', {'center': initialState}]" ref="draggable" @pointerdown="startDrag" @pointerup="stopDrag">
     <h1>DRAG AROUND</h1>
   </div>
 </template>
@@ -8,6 +8,7 @@
 import { ref } from 'vue';
 
 let clientX, clientY, movementX, movementY = 0;
+const initialState = ref(true)
 
 const draggable = ref();
 
@@ -24,6 +25,7 @@ const dragEvent = (e) => updateDrag(e);
 
 const updateDrag = (e) => {
   updateMousePosition(e);
+  initialState.value = false
   let element = draggable.value;
   let [offsetX, offsetY] = validatePosition(element.offsetLeft, element.offsetTop);
   element.style.left = (offsetX - movementX)+'px';
@@ -31,7 +33,6 @@ const updateDrag = (e) => {
 }
 
 const updateMousePosition = (e) => {
-  console.log('here')
   movementX = clientX - e.clientX;
   movementY = clientY - e.clientY;
   clientX = e.clientX;
@@ -51,10 +52,10 @@ const generatePosition = () => {
   let elementPositions = {
     maxHeight: windowHeight - elHeight,
     maxWidth: windowWidth - elWidth,
-    top: elHeight,
-    bottom: windowHeight - elHeight,
-    left: elWidth,
-    right: windowWidth - elWidth,
+    top: (elHeight / 2),
+    bottom: windowHeight - (elHeight / 2),
+    left: (elWidth / 2 ),
+    right: windowWidth - (elWidth / 2),
   }
   return elementPositions;
 }
@@ -64,9 +65,6 @@ const generatePosition = () => {
 .draggable-container {
   border: #fff 1px solid;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  /* transform: translate(-50%, -50%); */
   padding: 50px;
   cursor: pointer;
   transition: border .25s ease-in-out;
@@ -75,4 +73,7 @@ const generatePosition = () => {
   border: #fff 5px solid;
 }
 
+.center {
+  position: relative;
+}
 </style>
