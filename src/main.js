@@ -6,7 +6,8 @@ import App from './App.vue'
 const Home = {template: ''}
 
 const routes = [
-  {path: '/', component: Home},
+  {path: '/', component: () => import('./views/Home.vue')},
+  {path: '/drag', component: () => import('./views/DraggableScreen.vue')}
 ]
 
 const router = createRouter({
@@ -14,9 +15,6 @@ const router = createRouter({
   routes
 })
 
-const app = createApp(app);
+const app = createApp(App);
 app.use(router)
 app.mount('#app')
-
-
-// createApp(App).mount('#app')
