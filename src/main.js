@@ -7,7 +7,8 @@ const Home = {template: ''}
 
 const routes = [
   {path: '/', component: () => import('./views/Home.vue')},
-  {path: '/drag', component: () => import('./views/DraggableScreen.vue')}
+  {path: '/drag', component: () => import('./views/SimpleDrag.vue')},
+  {path: '/drag-n-drop', component: () => import('./views/DragNDrop.vue')},
 ]
 
 const router = createRouter({
