@@ -5,6 +5,7 @@
     <a href="/drag-n-drop">Drag and Drop</a>
     <a href="/sort-column">Sortable Column</a>
     <a href="/sort-row">Sortable Row</a>
+    <a href="/template-builder">Template Builder</a>
   </div>
 </template>
 

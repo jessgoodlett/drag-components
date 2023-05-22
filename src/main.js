@@ -11,6 +11,7 @@ const routes = [
   {path: '/drag-n-drop', component: () => import('./views/DragNDrop.vue')},
   {path: '/sort-column', component: () => import('./views/SortColumn.vue')},
   {path: '/sort-row', component: () => import('./views/SortRow.vue')},
+  {path: '/template-builder', component: () => import('./views/TemplateBuilder.vue')},
 ]
 
 const router = createRouter({
