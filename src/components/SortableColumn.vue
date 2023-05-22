@@ -61,13 +61,4 @@ const initSortableList = (e) => {
   .hold {
     border: 2px solid #ccc;
   }
-
-  .hovered {
-    background: blue;
-    border-style: dashed;
-  }
-
-  .invisble {
-    display: none;
-  }
 </style>
