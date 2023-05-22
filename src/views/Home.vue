@@ -3,6 +3,7 @@
   <div class="links">
     <a href="/drag">Drag in Window</a>
     <a href="/drag-n-drop">Drag and Drop</a>
+    <a href="/sort-column">Sortable Column</a>
   </div>
 </template>
 

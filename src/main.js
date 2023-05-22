@@ -9,6 +9,7 @@ const routes = [
   {path: '/', component: () => import('./views/Home.vue')},
   {path: '/drag', component: () => import('./views/SimpleDrag.vue')},
   {path: '/drag-n-drop', component: () => import('./views/DragNDrop.vue')},
+  {path: '/sort-column', component: () => import('./views/SortColumn.vue')},
 ]
 
 const router = createRouter({
